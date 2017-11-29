@@ -10,29 +10,29 @@ from Adafruit_MotorHAT import Adafruit_MotorHAT, Adafruit_DCMotor
 import time
 import atexit
 import math
-from urllib.request import urlopen
+import urllib2
 
-SEC_TO_RADIAN=1 #amount of seconds it takes for the rover to turn one radian *NOT ACTUAL VALUE
-time_delta=20 #time in seconds for the rover to update its current location *NOT ACTUAL VALUE
-length_delta=100 #how close the rover has to be of the desingnated point *NOT ACTUAL VALUE
-target=(0,0) #desired cordinated location *NOT ACTUAL VALUE
+SEC_TO_RADIAN=2.41 #amount of seconds it takes for the rover to turn one radian *NOT ACTUAL VALUE
+time_delta=4 #time in seconds for the rover to update its current location *NOT ACTUAL VALUE
+length_delta=200 #how close the rover has to be of the desingnated point *NOT ACTUAL VALUE
+target=(500,500) #desired cordinated location *NOT ACTUAL VALUE
 
 rover = Adafruit_MotorHAT(addr=0x60)
 
 leftm=rover.getMotor(1)#left motor
-leftm.setSpeed(150)
+leftm.setSpeed(255)
 
 rightm=rover.getMotor(2)#right motor
-rightm.setSpeed(150)
+rightm.setSpeed(255)
 
 def getCord():
-    cords=urlopen("10.144.7.184/coord.txt").read()
+    cords=urllib2.urlopen("http://10.144.7.184/coord.txt").read()
     clist=cords.split(",")
     return (int(clist[0]),int(clist[1]))
 
 def heading(start, end): #returns the angle of the vector with respect to the relative x-axis
     dx=end[0]-start[0]
-    dy=end[1]-start[1]
+    dy=end[1]-start[1] 
     if dx==0 and dy>0: #to prevent undefined division in dy/dx
         return math.pi/2
     if dx==0 and dy<0:
@@ -61,15 +61,22 @@ def left(radians):
     leftm.run(Adafruit_MotorHAT.BACKWARD)
     rightm.run(Adafruit_MotorHAT.FORWARD)
     time.sleep(radians*SEC_TO_RADIAN)
+def stop():
+    leftm.run(Adafruit_MotorHAT.RELEASE)
+    rightm.run(Adafruit_MotorHAT.RELEASE)
 
 start=getCord()
 #continue the following loop until your x and y are both within "delta" of the target
-while not(target[0] - delta <= start[0] <= target[0] + delta) or not(target[1] - delta <= start[1] <= target[1] + delta):
+while not(target[0] - length_delta <= start[0] <= target[0] + length_delta) or not(target[1] - length_delta <= start[1] <= target[1] + length_delta):
     forward(time_delta)
+    stop()
+    time.sleep(6)
     end=getCord()#not yet defined
-    turn_angle=heading(end,target)-heading(start,end)
-    if 0<=turn_angle<=math.pi:
-        left(turn_angle)
-    else:
-        right(2*math.pi-turn_angle)
+    if (start!=end):
+        turn_angle=(heading(end,target)-heading(start,end))%(2*math.pi)
+        if 0<=turn_angle<=math.pi:
+            left(turn_angle)
+        else:
+            right(2*math.pi-turn_angle)
     start=getCord()#not yet defined
+stop()
