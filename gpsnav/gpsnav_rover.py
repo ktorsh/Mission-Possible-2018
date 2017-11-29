@@ -12,7 +12,7 @@ import atexit
 import math
 import urllib2
 
-SEC_TO_RADIAN=2.31 #amount of seconds it takes for the rover to turn one radian *NOT ACTUAL VALUE
+SEC_TO_RADIAN=2.78 #amount of seconds it takes for the rover to turn one radian *NOT ACTUAL VALUE
 time_delta=4 #time in seconds for the rover to update its current location *NOT ACTUAL VALUE
 length_delta=200 #how close the rover has to be of the desingnated point *NOT ACTUAL VALUE
 i1=int(input("X: "))
