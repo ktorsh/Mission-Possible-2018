@@ -12,10 +12,12 @@ import atexit
 import math
 import urllib2
 
-SEC_TO_RADIAN=2.41 #amount of seconds it takes for the rover to turn one radian *NOT ACTUAL VALUE
+SEC_TO_RADIAN=2.31 #amount of seconds it takes for the rover to turn one radian *NOT ACTUAL VALUE
 time_delta=4 #time in seconds for the rover to update its current location *NOT ACTUAL VALUE
 length_delta=200 #how close the rover has to be of the desingnated point *NOT ACTUAL VALUE
-target=(500,500) #desired cordinated location *NOT ACTUAL VALUE
+i1=int(input("X: "))
+i2=int(input("Y: "))
+target=(i1,i2) #desired cordinated location *NOT ACTUAL VALUE
 
 rover = Adafruit_MotorHAT(addr=0x60)
 
@@ -75,8 +77,8 @@ while not(target[0] - length_delta <= start[0] <= target[0] + length_delta) or n
     if (start!=end):
         turn_angle=(heading(end,target)-heading(start,end))%(2*math.pi)
         if 0<=turn_angle<=math.pi:
-            left(turn_angle)
+            right(turn_angle)
         else:
-            right(2*math.pi-turn_angle)
+            left(2*math.pi-turn_angle)
     start=getCord()#not yet defined
 stop()
