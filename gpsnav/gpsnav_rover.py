@@ -9,6 +9,7 @@ from Adafruit_MotorHAT import Adafruit_MotorHAT, Adafruit_DCMotor
 import time
 import atexit
 import math
+from urllib.request import urlopen
 
 SEC_TO_RADIAN=1 #amount of seconds it takes for the rover to turn one radian *NOT ACTUAL VALUE
 time_delta=20 #time in seconds for the rover to update its current location *NOT ACTUAL VALUE
@@ -22,6 +23,11 @@ leftm.setSpeed(150)
 
 rightm=rover.getMotor(2)#right motor
 rightm.setSpeed(150)
+
+def getCord():
+    cords=urlopen("IP/coord.txt").read()#add IP
+    clist=cords.split(",")
+    return (int(clist[0]),int(clist[1]))
 
 def heading(start, end): #returns the angle of the vector with respect to the relative x-axis
     dx=end[0]-start[0]
@@ -55,17 +61,14 @@ def left(radians):
     rightm.run(Adafruit_MotorHAT.FORWARD)
     time.sleep(radians*SEC_TO_RADIAN)
 
-    
-
-start=position()#not yet defined
-
+start=getCord()
 #continue the following loop until your x and y are both within "delta" of the target
 while not(target[0] - delta <= start[0] <= target[0] + delta) or not(target[1] - delta <= start[1] <= target[1] + delta):
     forward(time_delta)
-    end=position()#not yet defined
+    end=getCord()#not yet defined
     turn_angle=heading(end,target)-heading(start,end)
     if 0<=turn_angle<=math.pi:
         left(turn_angle)
     else:
         right(2*math.pi-turn_angle)
-    start=position()#not yet defined
+    start=getCord()#not yet defined
