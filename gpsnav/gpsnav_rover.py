@@ -26,7 +26,7 @@ rightm=rover.getMotor(2)#right motor
 rightm.setSpeed(150)
 
 def getCord():
-    cords=urlopen("IP/coord.txt").read()#add IP
+    cords=urlopen("10.144.7.184/coord.txt").read()
     clist=cords.split(",")
     return (int(clist[0]),int(clist[1]))
 
