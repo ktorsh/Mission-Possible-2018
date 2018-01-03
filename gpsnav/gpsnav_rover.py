@@ -4,7 +4,8 @@ Group Y1: Kasra T, Roshini P, Shabarish N, Sanjana K.
 Purpose: Using the arctan method. it allows the rover to navigate to a desired location regardless of position
 Note: angles are in radians, might be converted to degrees in the future
 """
-
+import sys
+sys.path.append("/home/ktorsh/Documents/Adafruit-Motor-HAT-Python-Library")
 from Adafruit_MotorHAT import Adafruit_MotorHAT, Adafruit_DCMotor
 import time
 import atexit
