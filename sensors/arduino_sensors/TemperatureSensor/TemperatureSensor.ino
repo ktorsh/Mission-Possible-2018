@@ -8,8 +8,10 @@ void setup() {
 
 void loop() {
   int rawTemp = analogRead(tempAnalogPin);
-  float voltageTemp = rawTemp*5.0/1024.0;
-  float temperatureC = (voltageTemp-0.5)*100;
+  
+  float temperatureC = (-19.0/182)*rawTemp +(1997.0/26);
+  
   Serial.print("Degrees in C: ");
-  Serial.println(termperatureC);
+  Serial.println(temperatureC);
+  delay(5000);
 }

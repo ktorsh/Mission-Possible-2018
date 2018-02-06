@@ -2,7 +2,8 @@
 
 const int hallAnalogPin=A0;
 const int tempAnalogPin=A1;
-const int photoAnalogPin=A2;
+//const int photoAnalogPin=A2;
+const int gasAnalogPin=A2;
 
 void setup() {
   Serial.begin(9600);
@@ -12,14 +13,14 @@ void loop() {
   int rawHall = analogRead(hallAnalogPin);
   
   int rawTemp = analogRead(tempAnalogPin);
-  float voltageTemp = rawTemp*5.0/1024.0;
-  float temperatureC = (voltageTemp-0.5)*100;
+  float temperatureC = (-19.0/182)*rawTemp +(1997.0/26);
 
-  int rawPhoto = analogRead(photoAnalogPin);
+  int rawPhoto = analogRead(gasAnalogPin);
 
   Serial.print(rawHall);
   Serial.print(",");
   Serial.print(temperatureC);
   Serial.print(",");
   Serial.print(rawPhoto);  
+  Serial.println();
 }
