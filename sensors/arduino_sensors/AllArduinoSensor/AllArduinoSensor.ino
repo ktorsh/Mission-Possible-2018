@@ -15,12 +15,13 @@ void loop() {
   int rawTemp = analogRead(tempAnalogPin);
   float temperatureC = (-19.0/182)*rawTemp +(1997.0/26);
 
-  int rawPhoto = analogRead(gasAnalogPin);
+  int rawGas = analogRead(gasAnalogPin);
 
   Serial.print(rawHall);
   Serial.print(",");
   Serial.print(temperatureC);
   Serial.print(",");
-  Serial.print(rawPhoto);  
+  Serial.print(rawGas);  
   Serial.println();
+  delay(2000);
 }

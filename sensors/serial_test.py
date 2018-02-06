@@ -7,9 +7,10 @@ ser=serial.Serial("/dev/ttyACM0",9600)
 def getLastLine():
     lines=ser.read(ser.inWaiting()).split("\n")
     return (lines[-2])
-user_input=""
-while user_input!="quit":
-    user_input=raw_input("E: ")
-    ser.flush()
-    data=ser.readline()
-    print(getLastLine())
+
+data=getLastLine().split(",")
+print("Hall Effect Sensor: "+data[0])
+print("Temperature in C: "+data[1])
+print("Gas Sensor: "+data[2])
+
+
