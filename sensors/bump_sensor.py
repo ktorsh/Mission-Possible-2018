@@ -5,12 +5,12 @@ import time
 import RPi.GPIO as GPIO
 rover = Adafruit_MotorHAT(addr=0x60)
 
-lpin=17
+lpin=11
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(lpin, GPIO.OUT)
 GPIO.output(lpin, 1)
 
-rpin=17
+rpin=13
 GPIO.setup(rpin, GPIO.OUT)
 GPIO.output(rpin, 1)
 
@@ -42,12 +42,12 @@ def stop():
 
 try:
     while True:
-        if !(GPIO.input(lpin)):
+        if not(GPIO.input(lpin)):
             backward()
             time.sleep(1.5)
             right()
             time.sleep(3)
-        elif !(GPIO.input(rpin)):
+        elif not(GPIO.input(rpin)):
             backward()
             time.sleep(1.5)
             left()
