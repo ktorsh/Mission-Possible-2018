@@ -27,16 +27,7 @@ def right():
 def left():
     leftm.run(Adafruit_MotorHAT.BACKWARD)
     rightm.run(Adafruit_MotorHAT.FORWARD)
-check = True
-while True:
-    if (check ==True):
-        forward()
-        time.sleep(10)
-        check = False
-    else:
-        backward()
-        time.sleep(10)
-        check = True
+forward()
 
 
     

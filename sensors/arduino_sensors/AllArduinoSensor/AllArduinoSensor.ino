@@ -17,11 +17,8 @@ void loop() {
 
   int rawGas = analogRead(gasAnalogPin);
 
-  Serial.print(rawHall);
-  Serial.print(",");
-  Serial.print(temperatureC);
-  Serial.print(",");
-  Serial.print(rawGas);  
-  Serial.println();
+  String printStatement=rawHall+","+temperatureC+","+rawGas;
+
+  Serial.println(printStatement);
   delay(2000);
 }
