@@ -10,5 +10,6 @@ GPIO.setup(rpin, GPIO.OUT)
 GPIO.output(rpin, 1)
 
 while True:
-    print("Left: "+str(GPIO.input(lpin)))
-    print("Right: "+str(GPIO.input(rpin)))
+    if (GPIO.input(rpin)==0):
+        print "Pressed"
+
