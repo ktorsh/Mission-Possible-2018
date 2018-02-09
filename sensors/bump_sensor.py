@@ -5,14 +5,6 @@ import time
 import RPi.GPIO as GPIO
 rover = Adafruit_MotorHAT(addr=0x60)
 
-lpin=11
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(lpin, GPIO.OUT)
-GPIO.output(lpin, 1)
-
-rpin=13
-GPIO.setup(rpin, GPIO.OUT)
-GPIO.output(rpin, 1)
 
 leftm=rover.getMotor(1)#left motor
 leftm.setSpeed(255)
@@ -20,6 +12,11 @@ leftm.setSpeed(255)
 rightm=rover.getMotor(2)#right motor
 rightm.setSpeed(255)
 
+ser=serial.Serial("/dev/ttyACM0",9600)
+#ser=serial.Serial("dev/ttyACM1",9600)
+def getLastLine():
+    lines=ser.read(ser.inWaiting()).split("\n")
+    return (lines[-2])
 def forward():
     leftm.run(Adafruit_MotorHAT.FORWARD)
     rightm.run(Adafruit_MotorHAT.FORWARD)
@@ -42,12 +39,13 @@ def stop():
 
 try:
     while True:
-        if not(GPIO.input(lpin)):
+        lines=getLastLine().split(",")
+        if lines[3]=="0":
             backward()
             time.sleep(1.5)
             right()
             time.sleep(3)
-        elif not(GPIO.input(rpin)):
+        elif lines[4]=="0":
             backward()
             time.sleep(1.5)
             left()

@@ -5,8 +5,15 @@ const int tempAnalogPin=A1;
 //const int photoAnalogPin=A2;
 const int gasAnalogPin=A2;
 
+const int lbump=7;
+const int rbump=3;
+
 void setup() {
   Serial.begin(9600);
+  pinMode(lbump, INPUT);
+  digitalWrite(lbump, HIGH);
+  pinMode(rbump, INPUT);
+  digitalWrite(rbump, HIGH);
 }
 
 void loop() {
@@ -17,8 +24,12 @@ void loop() {
 
   int rawGas = analogRead(gasAnalogPin);
 
-  String printStatement=rawHall+","+temperatureC+","+rawGas;
+  int ltouch=digitalRead(lbump);
+  int rtouch=digitalRead(rbump);
+
+  String comma=",";
+  String printStatement=rawHall+comma+temperatureC+comma+rawGas+comma+ltouch+comma+rtouch;
 
   Serial.println(printStatement);
-  delay(2000);
+  delay(1000);
 }
