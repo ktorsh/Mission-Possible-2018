@@ -1,0 +1,58 @@
+Cordinates: (152, 1446)
+Cordinates: (1787, 830)
+Cordinates: (-1, -1)
+Hall Effect Sensor: 562
+Temperature in C: 20.33
+Gas Sensor: 528
+X rotation: 0.857578153318
+Y rotation: -13.0334440786
+Driver Message: hello
+ 
+Cordinates: (1372, 1084)
+Hall Effect Sensor: 544
+Temperature in C: 22.63
+Gas Sensor: 560
+X rotation: -0.103678045254
+Y rotation: -4.40324198998
+Driver Message: right over the volcano, low temp discard
+ 
+Cordinates: (1600, 1103)
+Hall Effect Sensor: 534
+Temperature in C: -28.32
+Gas Sensor: 708
+X rotation: -0.165119352426
+Y rotation: -4.89949937405
+Driver Message: discard
+ 
+Cordinates: (216, 1461)
+Hall Effect Sensor: 532
+Temperature in C: 25.97
+Gas Sensor: 693
+X rotation: -4.16396371684
+Y rotation: 0.286398605487
+Driver Message: over the volcano
+ 
+Cordinates: (741, 1655)
+Hall Effect Sensor: 533
+Temperature in C: 24.92
+Gas Sensor: 709
+X rotation: -3.97359973072
+Y rotation: 0.459269357909
+Driver Message: over the volcano
+ 
+Cordinates: (1101, 1134)
+Hall Effect Sensor: 525
+Temperature in C: 24.51
+Gas Sensor: 536
+X rotation: -7.68398160857
+Y rotation: -12.8814057973
+Driver Message: over the side of volcano
+ 
+Cordinates: (674, 902)
+Hall Effect Sensor: 521
+Temperature in C: 24.51
+Gas Sensor: 471
+X rotation: 2.02160910061
+Y rotation: -20.9987426142
+Driver Message: evalation at bottom
+ 

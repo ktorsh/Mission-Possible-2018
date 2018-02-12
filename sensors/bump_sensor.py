@@ -3,6 +3,7 @@ sys.path.append("/home/ktorsh/Documents/Adafruit-Motor-HAT-Python-Library")
 from Adafruit_MotorHAT import Adafruit_MotorHAT, Adafruit_DCMotor
 import time
 import RPi.GPIO as GPIO
+import serial
 rover = Adafruit_MotorHAT(addr=0x60)
 
 

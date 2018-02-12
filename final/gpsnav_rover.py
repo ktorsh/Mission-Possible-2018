@@ -12,7 +12,7 @@ import atexit
 import math
 import urllib2
 
-SEC_TO_RADIAN=2.78 #amount of seconds it takes for the rover to turn one radian *NOT ACTUAL VALUE
+SEC_TO_RADIAN=3.78 #amount of seconds it takes for the rover to turn one radian *NOT ACTUAL VALUE
 time_delta=4 #time in seconds for the rover to update its current location *NOT ACTUAL VALUE
 length_delta=200 #how close the rover has to be of the desingnated point *NOT ACTUAL VALUE
 i1=int(input("X: "))
@@ -28,7 +28,7 @@ rightm=rover.getMotor(2)#right motor
 rightm.setSpeed(255)
 
 def getCord():
-    cords=urllib2.urlopen("http://10.144.7.184/coord.txt").read()
+    cords=urllib2.urlopen("http://10.144.7.183/coord.txt").read()
     clist=cords.split(",")
     return (int(clist[0]),int(clist[1]))
 

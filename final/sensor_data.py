@@ -53,8 +53,8 @@ def get_x_rotation(x,y,z):
     radians = math.atan2(y, dist(x,z))
     return math.degrees(radians)
 
-cords=getCords()
-
+cords=getCord()
+print(ser.readline())
 data=getLastLine().split(",")
 print("Hall Effect Sensor: "+data[0])
 print("Temperature in C: "+data[1])
@@ -74,15 +74,15 @@ y_rot=get_y_rotation(accel_xout_scaled, accel_yout_scaled, accel_zout_scaled)
 print("x rotation: " + str(x_rot))
 print("y rotation: " + str(y_rot))
 
-message=str(input("Message with report: "))
+message=str(raw_input("Message with report: "))
 
-with open('collected_sensor_data/sensor_data.txt', 'a') as data:
-    data.write("Cordinates: "+str(cords)+"\n")
-    data.write("Hall Effect Sensor: "+data[0]+"\n")
-    data.write("Temperature in C: "+data[1]+"\n")
-    data.write("Gas Sensor: "+data[2]+"\n")
-    data.write("X rotation: " + str(x_rot)+"\n")
-    data.write("Y rotation: " + str(y_rot)+"\n")
-    data.write("Driver Message: "+message+"\n")
-    data.write(" \n")
+with open('collected_sensor_data/sensor_data.txt', 'a') as datas:
+    datas.write("Cordinates: "+str(cords)+"\n")
+    datas.write("Hall Effect Sensor: "+data[0]+"\n")
+    datas.write("Temperature in C: "+data[1]+"\n")
+    datas.write("Gas Sensor: "+data[2]+"\n")
+    datas.write("X rotation: " + str(x_rot)+"\n")
+    datas.write("Y rotation: " + str(y_rot)+"\n")
+    datas.write("Driver Message: "+message+"\n")
+    datas.write(" \n")
     
