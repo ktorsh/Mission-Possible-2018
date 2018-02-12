@@ -3,9 +3,9 @@ import smbus
 import math
 import os
 import serial
+import urllib2
 
-file_name=str(input("Name of File: "))
-output_file=file("collected_sensor_data/".join(file_name),"w")
+message=str(input("Message with report: "))
 
 power_mgmt_1 = 0x6b
 power_mgmt_2 = 0x6c
@@ -18,6 +18,11 @@ bus.write_byte_data(address, power_mgmt_1, 0)
 
 ser=serial.Serial("/dev/ttyACM0",9600)
 #ser=serial.Serial("dev/ttyACM1",9600)
+
+def getCord():
+    cords=urllib2.urlopen("http://10.144.7.183/coord.txt").read()
+    clist=cords.split(",")
+    return (int(clist[0]),int(clist[1]))
 
 def getLastLine():
     lines=ser.read(ser.inWaiting()).split("\n")
@@ -66,4 +71,13 @@ accel_zout_scaled = accel_zout / 16384.0
 print("x rotation: " + get_x_rotation(accel_xout_scaled, accel_yout_scaled, accel_zout_scaled))
 print("y rotation: " + get_y_rotation(accel_xout_scaled, accel_yout_scaled, accel_zout_scaled))
 
-output_file.close()
+with open('collected_sensor_data/sensor_data.txt', 'a') as data:
+    data.write("Cordinates: "+str(getCords())+"\n")
+    data.write("Hall Effect Sensor: "+data[0]+"\n")
+    data.write("Temperature in C: "+data[1]+"\n")
+    data.write("Gas Sensor: "+data[2]+"\n")
+    data.write("x rotation: " + get_x_rotation(accel_xout_scaled, accel_yout_scaled, accel_zout_scaled)+"\n")
+    data.write("y rotation: " + get_y_rotation(accel_xout_scaled, accel_yout_scaled, accel_zout_scaled)+"\n")
+    data.write(message+"\n")
+    data.write(" \n")
+    
