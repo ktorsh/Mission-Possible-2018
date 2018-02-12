@@ -5,8 +5,6 @@ import os
 import serial
 import urllib2
 
-message=str(input("Message with report: "))
-
 power_mgmt_1 = 0x6b
 power_mgmt_2 = 0x6c
 
@@ -55,6 +53,8 @@ def get_x_rotation(x,y,z):
     radians = math.atan2(y, dist(x,z))
     return math.degrees(radians)
 
+cords=getCords()
+
 data=getLastLine().split(",")
 print("Hall Effect Sensor: "+data[0])
 print("Temperature in C: "+data[1])
@@ -68,16 +68,21 @@ accel_xout_scaled = accel_xout / 16384.0
 accel_yout_scaled = accel_yout / 16384.0
 accel_zout_scaled = accel_zout / 16384.0
 
-print("x rotation: " + get_x_rotation(accel_xout_scaled, accel_yout_scaled, accel_zout_scaled))
-print("y rotation: " + get_y_rotation(accel_xout_scaled, accel_yout_scaled, accel_zout_scaled))
+x_rot=get_x_rotation(accel_xout_scaled, accel_yout_scaled, accel_zout_scaled)
+y_rot=get_y_rotation(accel_xout_scaled, accel_yout_scaled, accel_zout_scaled)
+
+print("x rotation: " + str(x_rot))
+print("y rotation: " + str(y_rot))
+
+message=str(input("Message with report: "))
 
 with open('collected_sensor_data/sensor_data.txt', 'a') as data:
-    data.write("Cordinates: "+str(getCords())+"\n")
+    data.write("Cordinates: "+str(cords)+"\n")
     data.write("Hall Effect Sensor: "+data[0]+"\n")
     data.write("Temperature in C: "+data[1]+"\n")
     data.write("Gas Sensor: "+data[2]+"\n")
-    data.write("x rotation: " + get_x_rotation(accel_xout_scaled, accel_yout_scaled, accel_zout_scaled)+"\n")
-    data.write("y rotation: " + get_y_rotation(accel_xout_scaled, accel_yout_scaled, accel_zout_scaled)+"\n")
-    data.write(message+"\n")
+    data.write("X rotation: " + str(x_rot)+"\n")
+    data.write("Y rotation: " + str(y_rot)+"\n")
+    data.write("Driver Message: "+message+"\n")
     data.write(" \n")
     
