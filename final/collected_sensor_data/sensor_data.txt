@@ -56,3 +56,67 @@ X rotation: 2.02160910061
 Y rotation: -20.9987426142
 Driver Message: evalation at bottom
  
+Cordinates: (1160, 293)
+Hall Effect Sensor: 560
+Temperature in C: 20.85
+Gas Sensor: 446
+X rotation: 19.3513604088
+Y rotation: -12.1325610752
+Driver Message: at oxbow lake
+ 
+Cordinates: (1525, 1647)
+Hall Effect Sensor: 549
+Temperature in C: 22.84
+Gas Sensor: 435
+X rotation: 0.689391548313
+Y rotation: -10.785566243
+Driver Message: oxbow part 2
+ 
+Cordinates: (1507, 1657)
+Hall Effect Sensor: 560
+Temperature in C: 21.90
+Gas Sensor: 422
+X rotation: 0.903781165553
+Y rotation: -10.7448232178
+Driver Message: oxbow part 3
+ 
+Cordinates: (1841, 398)
+Hall Effect Sensor: 559
+Temperature in C: 22.21
+Gas Sensor: 418
+X rotation: -3.36367915119
+Y rotation: 1.93189629176
+Driver Message: at incline at bottom 
+ 
+Cordinates: (1836, 376)
+Hall Effect Sensor: 562
+Temperature in C: 21.48
+Gas Sensor: 412
+X rotation: -0.295803940636
+Y rotation: -1.21288135239
+Driver Message: bottom incline part 2
+ 
+Cordinates: (168, 449)
+Hall Effect Sensor: 561
+Temperature in C: 21.69
+Gas Sensor: 409
+X rotation: -0.221051456723
+Y rotation: -1.25272161997
+Driver Message: bottom part 3
+ 
+Cordinates: (2167, 1091)
+Hall Effect Sensor: 564
+Temperature in C: 21.69
+Gas Sensor: 371
+X rotation: 2.32904426393
+Y rotation: -1.84802077674
+Driver Message: dune
+ 
+Cordinates: (-1, -1)
+Hall Effect Sensor: 565
+Temperature in C: 21.79
+Gas Sensor: 384
+X rotation: 2.65392004834
+Y rotation: -0.663257600255
+Driver Message: lond dune pt . 2
+ 
